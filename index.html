@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./res/css/style.css">
+    <link rel="icon" type="image/x-icon" href="./res/img/favicon.ico">
+    <title>Tasks</title>
+</head>
+
+<body>
+  <header>
+      <nav>
+          <div id="hambuguer" onclick="onClickMenu()">
+            <div id="bar1" class="menubar"></div>
+            <div id="bar2" class="menubar"></div>
+            <div id="bar3" class="menubar"></div>
+          </div>
+          <ul class="menu" id="menu">
+            <li><a class="btnMenu1" id="menu1" href="#">English</a></li>
+            <li><a class="btnMenu2" id="menu2" href="#">Dark Mode</a></li>
+            <li><a class="btnMenu3" id="menu3" href="#">Github</a></li>
+            <li><a class="btnMenu4" id="menu4" href="#">Portfolio</a></li>
+          </ul>
+        </nav>
+        <div class="menu-bg" id="menu-bg"></div>
+  </header>
+
+  <div id="app" class="app">
+    <section id="tasklist-container" class="tasklist-container">
+      <!-- Tasks will be created here! -->
+    </section>
+  </div>
+
+  <div class="btn-newtask">
+    <button onclick="addTask()" type="button" id="newtask">New Task</button>
+  </div>
+
+  <div id="task-window" class="task-window" style="display:none">
+    <div class="optionsTask">
+        <div class="infoTask">
+            <label id="TaskDescr" name="TaskDescr">Task Name<input class = "task-name" type = "text" id = "task-name" name = "task-name"></label><br/><br/>
+        </div>
+        <button onclick="cancelTask();" type="button" id="cancel-task">Cancelar</button>
+        <button onclick="newTask();" type="button" id="create-task"> Criar </button>
+    </div>
+</div>
+
+  <script src="./res/js/script.js"></script>
+</body>
+
+</html>

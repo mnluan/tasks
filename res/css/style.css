@@ -6,6 +6,7 @@
   --btntext: white;
   --main-color: #187566;
   --secondary:#62ac66;
+  --secondary2:#376139;
   --btnhover: invert(17%) contrast(121%);
 }
 
@@ -18,6 +19,7 @@
   --task-menu: rgba(143, 63, 9, 0.452);
   --main-color: #4a54a8;
   --secondary:#1a1f52;
+  --secondary2:#06081d;
   --btnhover: invert(17%) contrast(121%);
 }
 
@@ -118,14 +120,29 @@ color: white;
   top:15%;
   left:50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 90%;
   height: 70px;
 }
 
-.tasks{
-  color: var(--text);
+dt{
+  color: white;
   background-color: var(--secondary);
   padding: 10px;
+  font-size: 25px;
+  border-radius: 10px;
+  list-style-type: none;
+}
+
+dt:hover{
+  background-color: var(--secondary2);
+}
+
+#list-items li {
+  font-size: 1.1em;
+  text-transform: capitalize;
+}
+#list-items li.done {
+  text-decoration: line-through
 }
 
 .btn-newTask{
@@ -191,13 +208,6 @@ button#newtask:hover {
   padding: 5px;
 }
 
-#task-date{
-  padding: 8px;
-  border-radius: 10px;
-  outline: none;
-  font-size: 15px;
-}
-
 label{
 color: rgb(255, 255, 255);
 font-size: large;
@@ -214,4 +224,25 @@ button#create-task
   cursor: pointer;
   text-align: center;
   
+}
+
+button#update,
+button#delete
+{
+  background-repeat: no-repeat;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 10px;
+}
+
+button#update{
+  background-image: url('../img/update.svg');
+}
+
+button#delete{
+  background-image: url('../img/delete.svg');
 }

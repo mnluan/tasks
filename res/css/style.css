@@ -226,23 +226,35 @@ button#create-task
   
 }
 
+button#space{
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
 button#update,
+button#check,
 button#delete
 {
   background-repeat: no-repeat;
   cursor: pointer;
-  width: 45px;
-  height: 45px;
+  width: 28px;
+  height: 28px;
   background-color: transparent;
   outline: none;
   border: none;
-  padding: 10px;
+}
+
+button#delete{
+  background-image: url('../img/delete.svg');
 }
 
 button#update{
   background-image: url('../img/update.svg');
 }
 
-button#delete{
-  background-image: url('../img/delete.svg');
+button#check{
+  background-image: url('../img/check.svg');
 }

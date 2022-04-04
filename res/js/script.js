@@ -62,7 +62,7 @@ function newTask() {
   let input = document.getElementById('task-name');
   let text = input.value;
   if (text === ""){
-    return alert("You need to put in a number");
+    return alert("You need some task");
   }
   items.push({
     value: text, time: (new Date()).toLocaleDateString("en-US")
@@ -72,11 +72,24 @@ function newTask() {
   listItems();
 
   input.value = "";
-  let element = document.getElementById('tasklist-container');
-  //element.innerHTML = '<div id="tasks" class="tasks">'+ text + '<br>' + time + '<br><button onclick="update();" id="update"></button> </button> </div><br>';
   document.getElementById('task-window').style.display = 'none';
 
 }
+
+function openUpdate(index) {
+  let update = prompt("", "");
+  items[index].value = update;
+  localStorage.setItem('todo-list', JSON.stringify(items));
+  listItems();
+}
+
+function checkItem(index) {
+  let text = items[index].value;
+  items[index].value = "<s>"+ text +"</s>";
+  localStorage.setItem('todo-list', JSON.stringify(items));
+  listItems();
+}
+
 
 function deleteItem(index) {
   items.splice(index, 1);
@@ -95,8 +108,12 @@ function listItems() {
   for (var i = 0; i < items.length; i++) {
     list += "<dt class"+ (items[i].done ? "done" : "") +">";
     list += items[i].value + "<br>";
-    list += "<small class='label' onclick='markAsDone("+ i +")'>"+ items[i].time +"</small><br>";
-    list += "<span class='label alert' onclick='deleteItem("+ i +")'><button onclick='del();' id='delete'></span></dt><br>";
+    list += "<small onclick='markAsDone("+ i +")'>"+ items[i].time +"</small><br>";
+    list += "<span onclick='deleteItem("+ i +")'><button id='delete'></button></span>";
+    list += "<span><button id='space'></button></span>";
+    list += "<span onclick='openUpdate("+ i +")'><button id='update'></button></span>";
+    list += "<span><button id='space'></button></span>";
+    list += "<span onclick='checkItem("+ i +")'><button id='check'></button></span></dt><br>";
   }
   document.querySelector("#tasklist-container").innerHTML = list;
 }

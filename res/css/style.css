@@ -37,6 +37,7 @@ nav {
 }
 #msg{
   color: var(--text);
+  position:sticky;
 }
 /* Menu  and  X */
 .menubar {
@@ -154,7 +155,7 @@ dt:hover{
 }
 
 button#newtask{
-  position:absolute;
+  position:fixed;
   top:96%;
   left:50%;
   transform: translate(-50%, -50%);

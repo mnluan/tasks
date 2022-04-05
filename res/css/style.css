@@ -35,7 +35,9 @@ nav {
   position: fixed;
   z-index: 2;
 }
-
+#msg{
+  color: var(--text);
+}
 /* Menu  and  X */
 .menubar {
   height: 5px;

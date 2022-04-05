@@ -24,14 +24,16 @@ function updateLang(){
     document.getElementById("TaskDescr").innerHTML="Nome da tarefa";
     document.getElementById("create-task").innerHTML="Criar";
     document.getElementById("cancel-task").innerHTML="Cancelar";
+    document.getElementById("msg").innerHTML="Feito com &#10084;&#65039; por Luan Nascimento";
   }
   if(localStorage.language === "en"){
     document.getElementById("menu1").innerHTML="Portugu&ecirc;s";
-    document.getElementById("menu4").innerHTML="Portifolio";
+    document.getElementById("menu4").innerHTML="Portfolio";
     document.getElementById("newtask").innerHTML="New Task";
     document.getElementById("TaskDescr").innerHTML="Task name";
     document.getElementById("create-task").innerHTML="Create";
     document.getElementById("cancel-task").innerHTML="Cancel";
+    document.getElementById("msg").innerHTML="Made With &#10084;&#65039; by Luan Nascimento";
   }
 }
 
@@ -46,10 +48,11 @@ function updateTheme(){
 }
 
   // selector .btnMenu
-  const btnMenu1 = document.querySelector('.btnMenu1')
-  const btnMenu2 = document.querySelector('.btnMenu2')
-  const btnMenu3 = document.querySelector('.btnMenu3')
-  const btnMenu4 = document.querySelector('.btnMenu4')
+  const btnMenu1 = document.querySelector('.btnMenu1');
+  const btnMenu2 = document.querySelector('.btnMenu2');
+  const btnMenu3 = document.querySelector('.btnMenu3');
+  const btnMenu4 = document.querySelector('.btnMenu4');
+  const btnMenu5 = document.querySelector('.btnMenu4');
   
   // click buttons to close
     btnMenu1.addEventListener('click', function() {
@@ -88,6 +91,12 @@ function updateTheme(){
   })
   
   btnMenu4.addEventListener('click', function() {
+    document.getElementById("hambuguer").classList.toggle("change");
+    document.getElementById("menu").classList.toggle("change");
+    document.getElementById("menu-bg").classList.toggle("change-bg");
+  })
+
+  btnMenu5.addEventListener('click', function() {
     document.getElementById("hambuguer").classList.toggle("change");
     document.getElementById("menu").classList.toggle("change");
     document.getElementById("menu-bg").classList.toggle("change-bg");

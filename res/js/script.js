@@ -1,13 +1,50 @@
 const $html = document.querySelector('html');
 var items = JSON.parse(localStorage.getItem('todo-list')) || [];
-var theme = false;
 
 function onClickMenu(){
     document.getElementById("hambuguer").classList.toggle("change");
     document.getElementById("menu").classList.toggle("change");
     document.getElementById("menu-bg").classList.toggle("change-bg");
   }
-  
+
+function testStorage(){
+  if(localStorage.theme == null ){
+    localStorage.theme = "Light";
+  }
+  if(localStorage.language == null ){
+    localStorage.language = "en";
+  }
+}
+
+function updateLang(){
+  if (localStorage.language === "pt"){
+    document.getElementById("menu1").innerHTML="English";
+    document.getElementById("menu4").innerHTML="Portif&oacute;lio";
+    document.getElementById("newtask").innerHTML="Nova Tarefa";
+    document.getElementById("TaskDescr").innerHTML="Nome da tarefa";
+    document.getElementById("create-task").innerHTML="Criar";
+    document.getElementById("cancel-task").innerHTML="Cancelar";
+  }
+  if(localStorage.language === "en"){
+    document.getElementById("menu1").innerHTML="Portugu&ecirc;s";
+    document.getElementById("menu4").innerHTML="Portifolio";
+    document.getElementById("newtask").innerHTML="New Task";
+    document.getElementById("TaskDescr").innerHTML="Task name";
+    document.getElementById("create-task").innerHTML="Create";
+    document.getElementById("cancel-task").innerHTML="Cancel";
+  }
+}
+
+function updateTheme(){
+  if (localStorage.theme === "Dark"){
+    document.getElementById("menu2").innerHTML="Light Mode";
+    $html.classList.toggle("dark-mode");
+  }
+  if (localStorage.theme === "Light"){
+    document.getElementById("menu2").innerHTML="Dark Mode";
+  }
+}
+
   // selector .btnMenu
   const btnMenu1 = document.querySelector('.btnMenu1')
   const btnMenu2 = document.querySelector('.btnMenu2')
@@ -19,22 +56,29 @@ function onClickMenu(){
     document.getElementById("hambuguer").classList.toggle("change");
     document.getElementById("menu").classList.toggle("change");
     document.getElementById("menu-bg").classList.toggle("change-bg");
+    if(localStorage.language === "pt"){
+      localStorage.language = "en";
+      updateLang();
+    }else{
+      localStorage.language = "pt";
+      updateLang();
+    }
   })
   
   btnMenu2.addEventListener('click', function() {
     document.getElementById("hambuguer").classList.toggle("change");
     document.getElementById("menu").classList.toggle("change");
     document.getElementById("menu-bg").classList.toggle("change-bg");
-    if (theme == false){
-        $html.classList.toggle("dark-mode");
-        document.getElementById("menu2").innerHTML="Light Mode";
-        theme = true;
+    if(localStorage.theme === "Dark"){
+      localStorage.theme = "Light";
+      theme = localStorage.theme;
+      updateTheme();
     }else{
-        $html.classList.toggle("dark-mode");
-        document.getElementById("menu2").innerHTML="Dark Mode";
-        theme = false;
+      localStorage.theme = "Dark";
+      theme = localStorage.theme;
+      updateTheme();
     }
-    
+    document.location.reload(true);
   })
   
   btnMenu3.addEventListener('click', function() {
@@ -64,9 +108,16 @@ function newTask() {
   if (text === ""){
     return alert("You need some task");
   }
-  items.push({
-    value: text, time: (new Date()).toLocaleDateString("en-US")
-  })
+  if (localStorage.language === "pt"){
+    items.push({
+      value: text, time: (new Date()).toLocaleDateString("pt-BR")
+    });
+  }
+  if (localStorage.language === "en"){
+    items.push({
+      value: text, time: (new Date()).toLocaleDateString("en-US")
+    });
+  }
 
   localStorage.setItem('todo-list', JSON.stringify(items));
   listItems();
@@ -119,5 +170,8 @@ function listItems() {
 }
 
 (function() {
+  testStorage();
   listItems();
+  updateLang();
+  updateTheme();
 })();
